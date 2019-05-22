@@ -29,7 +29,52 @@ public class TicketMachine
         balance = 0;
         total = 0;
     }
-
+    public TicketMachine ()
+    {
+        price = 5555;
+    }
+    
+    /**
+     * designed to simulate emptying the machine of money. It should both return the value in total and reset total to be zero.
+     */
+    public void emptyMachine()
+    {
+        System.out.println(total);
+        total = 0;
+    }
+    
+    /**
+     * implement method empty that simulates the effect of removing all the money from the machine
+     */
+    public void empty()
+    {
+        total = 0;
+    }
+    
+    /**
+     * show price method
+     */
+    public void showPrice()
+    {
+        System.out.println("The price of a ticket is " + price + " cents.");
+    }
+    
+    /**
+     * prompt
+     */
+    public void prompt()
+    {
+        System.out.println("Please insert the correct amount of money.");
+    }
+    
+    /**
+     * assign the value of the price.
+     */
+    public void setPrice(int ticketCost)
+    {
+        price = ticketCost;
+    }
+    
     /**
      * Return the price of a ticket.
      */
@@ -47,6 +92,14 @@ public class TicketMachine
         return balance;
     }
 
+        /**
+     * returns the value of the total field.
+     */
+    public int getTotal()
+    {
+        return total;
+    }
+    
     /**
      * Receive an amount of money in cents from a customer.
      */
@@ -62,17 +115,24 @@ public class TicketMachine
      */
     public void printTicket()
     {
-        // Simulate the printing of a ticket.
-        System.out.println("##################");
-        System.out.println("# The BlueJ Line");
-        System.out.println("# Ticket");
-        System.out.println("# " + price + " cents.");
-        System.out.println("##################");
-        System.out.println();
-
-        // Update the total collected with the balance.
-        total = total + balance;
-        // Clear the balance.
-        balance = 0;
+        int amountLeftToPay = price - balance;
+        if (amountLeftToPay <= 0) {
+            // Simulate the printing of a ticket.
+            System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Ticket");
+            System.out.println("# " + price + " cents.");
+            System.out.println("##################");
+            System.out.println();
+    
+            // Update the total collected with the balance.
+            total = total + balance;
+            // Clear the balance.
+            balance = 0;
+        }
+       else {
+           System.out.println("You must insert at least: " +
+                               amountLeftToPay + " cents.");
+       }     
     }
 }
